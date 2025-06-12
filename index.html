@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joy Lee's Creative World - Poems, Songs & Games</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4CAF50;    
+            --secondary-color: #2196F3;   
+            --accent-color: #FF9800;    
+            --dark-color: #2D3748;        
+            --light-color: #F8FAFC;       
+            --mint-green: #E8F5E9;       
+            --sky-blue: #E3F2FD;          
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .bg-decoration {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .bg-shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.05;
+            animation: float 60s infinite ease-in-out;
+        }
+        
+        .bg-shape.green {
+            background-color: var(--primary-color);
+        }
+        
+        .bg-shape.blue {
+            background-color: var(--secondary-color);
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 5rem 0 3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+        
+        header::after {
+            content: "";
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: var(--light-color);
+            border-radius: 50% 50% 0 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.15);
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+            position: relative;
+        }
+      
+        h1::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 10%;
+            width: 80%;
+            height: 3px;
+            background: white;
+            border-radius: 3px;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+        }
+        
+        h1:hover::after {
+            transform: scaleX(1);
+        }
+        
+        .header-subtitle {
+            font-size: 1.4rem;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+        
+        .intro-cards {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .intro-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.8rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            flex: 1 1 280px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .intro-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .intro-card i {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .intro-card h3 {
+            font-size: 1.3rem;
+            color: var(--dark-color);
+            margin-bottom: 0.8rem;
+        }
+        
+        .intro-card p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            transition: box-shadow 0.3s ease;
+        }
+        
+        nav:hover {
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin: 0 15px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            padding: 12px 15px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        /* Main Content Styles */
+        main {
+            max-width: 1200px;
+            margin: 4rem auto 2rem;
+            padding: 0 20px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            display: inline-block;
+            padding-bottom: 10px;
+            position: relative;
+        }
+        
+        .section-title h2::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            border-radius: 3px;
+        }
+        
+        .section-intro {
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            padding: 1.5rem;
+            background-color: var(--mint-green);
+            border-radius: 12px;
+            text-align: center;
+        }
+        
+        .section-intro p {
+            color: var(--dark-color);
+            font-size: 1.05rem;
+        }
+        
+        /* About Section */
+        .about-section {
+            margin-bottom: 6rem;
+            background-color: var(--sky-blue);
+            padding: 3rem 0;
+            border-radius: 15px;
+        }
+        
+        .about-container {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .about-image {
+            flex: 1 1 300px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .about-content {
+            flex: 1 1 400px;
+        }
+        
+        .about-title {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .about-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+        
+        .info-item i {
+            color: var(--secondary-color);
+            margin-right: 0.8rem;
+            font-size: 1.1rem;
+            margin-top: 2px;
+        }
+        
+        .info-label {
+            font-weight: 600;
+            color: var(--dark-color);
+            min-width: 100px;
+        }
+        
+        .info-value {
+            color: #4A5568;
+        }
+        
+        .hobbies {
+            margin-bottom: 1.5rem;
+        }
+        
+        .hobbies-title {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .hobby-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+        
+        .hobby-item {
+            background-color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--dark-color);
+            display: flex;
+            align-items: center;
+        }
+        
+        .hobby-item i {
+            color: var(--accent-color);
+            margin-right: 0.5rem;
+        }
+        
+        .motto {
+            font-size: 1.1rem;
+            font-style: italic;
+            color: var(--dark-color);
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .motto::before {
+            content: '"';
+            position: absolute;
+            left: 0;
+            top: -5px;
+            font-size: 2rem;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        
+        /* Poem Section */
+        .poem-section {
+            margin-bottom: 6rem;
+        }
+        
+        .poem-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .poem-card {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .poem-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+        }
+        
+        .poem-image {
+            height: 200px;
+            background-color: var(--gray-color);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .poem-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .poem-card:hover .poem-image img {
+            transform: scale(1.1);
+        }
+        
+        .poem-content {
+            padding: 1.5rem;
+        }
+        
+        .poem-title {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .poem-author {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+        
+        .poem-text {
+            color: #333;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+        
+        .poem-analysis {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background-color: #f0f7ff;
+            border-left: 3px solid var(--secondary-color);
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .analysis-title {
+            font-size: 1rem;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .xml-analysis {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+            background-color: white;
+            padding: 0.5rem;
+            border-radius: 4px;
+            overflow-x: auto;
+            color: #4A5568;
+        }
+        
+        /* Song Section */
+        .song-section {
+            margin-bottom: 6rem;
+            background-color: var(--mint-green);
+            padding: 3rem 0;
+            border-radius: 15px;
+        }
+        
+        .song-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .song-item {
+            display: flex;
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .song-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        .song-image {
+            width: 120px;
+            height: 120px;
+            background-color: var(--gray-color);
+            position: relative;
+        }
+        
+        .song-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .song-info {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .song-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .song-artist {
+            font-size: 0.9rem;
+            color: #555;
+            margin-bottom: 0.8rem;
+        }
+        
+        .song-description {
+            font-size: 0.95rem;
+            color: #444;
+            flex-grow: 1;
+        }
+        
+        .song-play {
+            align-self: flex-start;
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+        
+        .song-play:hover {
+            background-color: #E68A00;
+        }
+        
+        /* Game Section */
+        .game-section {
+            margin-bottom: 6rem;
+        }
+        
+        .game-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid #E2E8F0;
+        }
+        
+        .game-tab {
+            padding: 12px 25px;
+            cursor: pointer;
+            font-weight: 500;
+            color: #4A5568;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .game-tab.active {
+            color: var(--primary-color);
+        }
+        
+        .game-tab.active::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 3px;
+            background-color: var(--primary-color);
+            border-radius: 3px;
+        }
+        
+        .game-content {
+            display: none;
+        }
+        
+        .game-content.active {
+            display: block;
+        }
+        
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .game-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+        }
+        
+        .game-image {
+            height: 180px;
+            background-color: var(--gray-color);
+        }
+        
+        .game-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .game-details {
+            padding: 1.2rem;
+        }
+        
+        .game-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--dark-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .game-type {
+            display: inline-block;
+            background-color: rgba(76, 175, 80, 0.1);
+            color: var(--primary-color);
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        .game-description {
+            font-size: 0.95rem;
+            color: #555;
+            margin-bottom: 1rem;
+        }
+        
+        .game-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .game-feature {
+            display: flex;
+            align-items: center;
+            color: #666;
+            font-size: 0.85rem;
+        }
+        
+        .game-feature i {
+            color: var(--accent-color);
+            margin-right: 5px;
+        }
+        
+        /* Footer Styles */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 3rem 0 2rem;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+        
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-social a {
+            color: white;
+            font-size: 1.2rem;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.1);
+            transition: background-color 0.3s ease;
+        }
+        
+        .footer-social a:hover {
+            background-color: var(--primary-color);
+        }
+        
+        .footer-copyright {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* Responsive Design */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-50px) rotate(5deg);
+            }
+        }
+        
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .header-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .poem-cards, .game-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+            
+            .about-container {
+                flex-direction: column;
+                gap: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .song-item {
+                flex-direction: column;
+            }
+            
+            .song-image {
+                width: 100%;
+                height: 180px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .header-subtitle {
+                font-size: 1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .poem-cards, .game-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-info {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 背景装饰元素 -->
+    <div class="bg-decoration">
+        <div class="bg-shape green" style="width: 300px; height: 300px; top: -100px; right: 10%;"></div>
+        <div class="bg-shape blue" style="width: 200px; height: 200px; bottom: 10%; left: 5%;"></div>
+        <div class="bg-shape green" style="width: 150px; height: 150px; top: 30%; left: 15%; animation-delay: 10s;"></div>
+        <div class="bg-shape blue" style="width: 250px; height: 250px; bottom: 20%; right: 15%; animation-delay: 20s;"></div>
+    </div>
+    
+    <!-- Header Section -->
+    <header>
+        <div class="header-content">
+            <h1>Welcome to My Creative World</h1>
+            <p class="header-subtitle">
+                A personal journey through the beauty of poetry, the magic of music, and the excitement of gaming
+            </p>
+            
+            <div class="intro-cards">
+                <div class="intro-card">
+                    <i class="fas fa-book-open"></i>
+                    <h3>Timeless Poems</h3>
+                    <p>Explore profound verses that capture the essence of love, life, and nature's wonders.</p>
+                </div>
+                <div class="intro-card">
+                    <i class="fas fa-music"></i>
+                    <h3>Melodic Journey</h3>
+                    <p>Dive into the world of music with my favorite artists and the stories behind their songs.</p>
+                </div>
+                <div class="intro-card">
+                    <i class="fas fa-gamepad"></i>
+                    <h3>Playful Adventures</h3>
+                    <p>Discover exciting games that bring people together and spark creativity and fun.</p>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="nav-logo">Joy's Creative World</div>
+            <ul class="nav-links">
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#poems">Poems</a></li>
+                <li><a href="#songs">Songs</a></li>
+                <li><a href="#games">Games</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <main>
+        <!-- About Section -->
+        <section id="about" class="about-section">
+            <div class="header-content">
+                <h2 class="about-title">About Joy Lee</h2>
+                <div class="about-container">
+                    <div class="about-image">
+                        <img src="https://picsum.photos/seed/joy/600/800" alt="Joy Lee's Photo">
+                    </div>
+                    <div class="about-content">
+                        <div class="about-info">
+                            <div class="info-item">
+                                <div class="info-label">Chinese Name:</div>
+                                <div class="info-value">李悦</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">English Name:</div>
+                                <div class="info-value">Joy Lee</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Birthday:</div>
+                                <div class="info-value">May 21, 2005</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Favorite Color:</div>
+                                <div class="info-value">Mint Green</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Favorite Fruit:</div>
+                                <div class="info-value">Watermelon</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Hometown:</div>
+                                <div class="info-value">Beijing, China</div>
+                            </div>
+                        </div>
+                        
+                        <div class="hobbies">
+                            <div class="hobbies-title">My Hobbies</div>
+                            <div class="hobby-list">
+                                <div class="hobby-item"><i class="fas fa-guitar"></i> Playing Guitar</div>
+                                <div class="hobby-item"><i class="fas fa-gamepad"></i> Gaming</div>
+                                <div class="hobby-item"><i class="fas fa-microphone"></i> Singing</div>
+                                <div class="hobby-item"><i class="fas fa-book"></i> Reading</div>
+                                <div class="hobby-item"><i class="fas fa-camera"></i> Photography</div>
+                                <div class="hobby-item"><i class="fas fa-utensils"></i> Cooking</div>
+                            </div>
+                        </div>
+                        
+                        <div class="favorite-artists">
+                            <div class="hobbies-title">Favorite Artists</div>
+                            <div class="info-item">
+                                <div class="info-label">Chinese Artist:</div>
+                                <div class="info-value">JJ Lin (林俊杰)</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">International Artist:</div>
+                                <div class="info-value">Taylor Swift</div>
+                            </div>
+                        </div>
+                        
+                        <div class="motto">
+                            "保持热爱，奔赴山海" - Stay passionate and embrace every journey
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Poem Section -->
+        <section id="poems" class="poem-section">
+            <div class="section-title">
+                <h2>Poems from Stray Birds</h2>
+            </div>
+            <div class="section-intro">
+                <p>Explore selected poems from Rabindranath Tagore's <em>Stray Birds</em>, a collection that beautifully captures the essence of nature, love, and human experience. Each poem is accompanied by a critical analysis in XML format, highlighting its literary elements and thematic depth.</p>
+            </div>
+            <div class="poem-cards">
+                <!-- Poem 1 -->
+                <div class="poem-card">
+                    <div class="poem-image">
+                        <img src="https://picsum.photos/seed/poem1/600/400" alt="Poem Image">
+                    </div>
+                    <div class="poem-content">
+                        <h3 class="poem-title">The Fish and the Bird</h3>
+                        <p class="poem-author">By Rabindranath Tagore</p>
+                        <p class="poem-text">
+                            "The fish in the water is silent,<br>
+                            The animal on the earth is noisy,<br>
+                            The bird in the air is singing,<br>
+                            But Man has in him the silence of the sea,<br>
+                            The noise of the earth and<br>
+                            The music of the air."
+                        </p>
+                        <div class="poem-analysis">
+                            <div class="analysis-title">Critical Analysis (XML Format)</div>
+                            <div class="xml-analysis">
+&lt;poem-analysis&gt;
+  &lt;title&gt;The Fish and the Bird&lt;/title&gt;
+  &lt;themes&gt;
+    &lt;theme&gt;Harmony of Nature&lt;/theme&gt;
+    &lt;theme&gt;Human Complexity&lt;/theme&gt;
+    &lt;theme&gt;Balance in Existence&lt;/theme&gt;
+  &lt;/themes&gt;
+  &lt;literary-elements&gt;
+    &lt;element name="metaphor"&gt;Comparison of human nature to elements of nature&lt;/element&gt;
+    &lt;element name="contrast"&gt;Silence vs Noise vs Music&lt;/element&gt;
+    &lt;element name="rhythm"&gt;Fluid pace reflecting natural cycles&lt;/element&gt;
+  &lt;/literary-elements&gt;
+  &lt;interpretation&gt;
+    The poem highlights humanity's unique ability to embody various natural states, suggesting a harmonious coexistence with the environment.
+  &lt;/interpretation&gt;
+&lt;/poem-analysis&gt;
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Poem 2 -->
+                <div class="poem-card">
+                    <div class="poem-image">
+                        <img src="https://picsum.photos/seed/poem2/600/400" alt="Poem Image">
+                    </div>
+                    <div class="poem-content">
+                        <h3 class="poem-title">On Love</h3>
+                        <p class="poem-author">By Rabindranath Tagore</p>
+                        <p class="poem-text">
+                            "Love is life in its fullness like the cup with its wine.<br><br>
+                            When love is not madness, it is not love.<br><br>
+                            The same love that makes me laugh makes me cry.<br><br>
+                            Let life be beautiful like summer flowers<br>
+                            and death like autumn leaves."
+                        </p>
+                        <div class="poem-analysis">
+                            <div class="analysis-title">Critical Analysis (XML Format)</div>
+                            <div class="xml-analysis">
+&lt;poem-analysis&gt;
+  &lt;title&gt;On Love&lt;/title&gt;
+  &lt;themes&gt;
+    &lt;theme&gt;Passion and Emotion&lt;/theme&gt;
+    &lt;theme&gt;Cycle of Life&lt;/theme&gt;
+    &lt;theme&gt;Duality of Love&lt;/theme&gt;
+  &lt;/themes&gt;
+  &lt;literary-elements&gt;
+    &lt;element name="simile"&gt;Love compared to wine and flowers&lt;/element&gt;
+    &lt;element name="paradox"&gt;"Love is madness" contradiction&lt;/element&gt;
+    &lt;element name="imagery"&gt;Vivid natural imagery for life and death&lt;/element&gt;
+  &lt;/literary-elements&gt;
+  &lt;interpretation&gt;
+    The poem explores love as both a source of joy and sorrow, using natural metaphors to emphasize its role in the human experience.
+  &lt;/interpretation&gt;
+&lt;/poem-analysis&gt;
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Poem 3 -->
+                <div class="poem-card">
+                    <div class="poem-image">
+                        <img src="https://picsum.photos/seed/poem3/600/400" alt="Poem Image">
+                    </div>
+                    <div class="poem-content">
+                        <h3 class="poem-title">On Life and Death</h3>
+                        <p class="poem-author">By Rabindranath Tagore</p>
+                        <p class="poem-text">
+                            "The world has kissed my soul with its pain,<br>
+                            asking for its return in songs.<br><br>
+                            The touch of the nameless days clings to my heart<br>
+                            like mosses round the old tree.<br><br>
+                            Death's stamp gives value to the coin of life;<br>
+                            making it possible to buy with life what is truly precious."
+                        </p>
+                        <div class="poem-analysis">
+                            <div class="analysis-title">Critical Analysis (XML Format)</div>
+                            <div class="xml-analysis">
+&lt;poem-analysis&gt;
+  &lt;title&gt;On Life and Death&lt;/title&gt;
+  &lt;themes&gt;
+    &lt;theme&gt;Meaning of Existence&lt;/theme&gt;
+    &lt;theme&gt;Pain and Beauty&lt;/theme&gt;
+    &lt;theme&gt;Mortality and Value&lt;/theme&gt;
+  &lt;/themes&gt;
+  &lt;literary-elements&gt;
+    &lt;element name="personification"&gt;World kissing the soul&lt;/element&gt;
+    &lt;element name="metaphor"&gt;Life as a coin with death as its value&lt;/element&gt;
+    &lt;element name="allusion"&gt;Nature as a symbol of timelessness&lt;/element&gt;
+  &lt;/literary-elements&gt;
+  &lt;interpretation&gt;
+    The poem contemplates how pain and mortality give meaning to life, suggesting that true value arises from the awareness of our finite existence.
+  &lt;/interpretation&gt;
+&lt;/poem-analysis&gt;
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Song Section -->
+        <section id="songs" class="song-section">
+            <div class="section-title">
+                <h2>My Favorite Songs</h2>
+            </div>
+            <div class="section-intro">
+                <p>Discover some of my favorite songs that have inspired and accompanied me through different stages of life. Each song is selected for its lyrical depth, melodic beauty, and emotional resonance.</p>
+            </div>
+            <div class="song-list">
+                <!-- Song 1 -->
+                <div class="song-item">
+                    <div class="song-image">
+                        <img src="https://th.bing.com/th/id/OIP.5VhMv4G_gpJ8kYnitEIVNwHaHa?w=190&h=190&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3" alt="Love Story">
+                    </div>
+                    <div class="song-info">
+                        <h3 class="song-name">Love Story</h3>
+                        <p class="song-artist">Taylor Swift from <em>Fearless</em> (2008)</p>
+                        <p class="song-description">
+                            A timeless love song that reimagines Shakespeare's <em>Romeo and Juliet</em> with a happy ending. The song's catchy melody and romantic narrative made it a breakthrough hit for Taylor Swift, blending country and pop elements seamlessly.
+                        </p>
+                        <button class="song-play">
+                            <i class="fas fa-play"></i> Listen Now
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Song 2 -->
+                <div class="song-item">
+                    <div class="song-image">
+                        <img src="https://th.bing.com/th/id/OIP.le7hfT2ZS_T0CAN8waBe5wHaHa?w=200&h=200&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3" alt="Cruel Summer">
+                    </div>
+                    <div class="song-info">
+                        <h3 class="song-name">Cruel Summer</h3>
+                        <p class="song-artist">Taylor Swift from <em>Lover</em> (2019)</p>
+                        <p class="song-description">
+                            A vibrant pop anthem that captures the intensity of a summer romance. With its infectious beat and relatable lyrics about love's highs and lows, "Cruel Summer" has become a fan favorite, showcasing Taylor's ability to evolve her sound while maintaining emotional depth.
+                        </p>
+                        <button class="song-play">
+                            <i class="fas fa-play"></i> Listen Now
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Song 3 -->
+                <div class="song-item">
+                    <div class="song-image">
+                        <img src="https://picsum.photos/seed/youBelongWithMe/300/300" alt="You Belong With Me">
+                    </div>
+                    <div class="song-info">
+                        <h3 class="song-name">You Belong With Me</h3>
+                        <p class="song-artist">Taylor Swift from <em>Fearless</em> (2008)</p>
+                        <p class="song-description">
+                            A classic teenage love song that tells the story of unrequited love. The music video, featuring Taylor in dual roles, became an iconic part of her early career, and the song's relatable lyrics about friendship and love have made it a timeless favorite.
+                        </p>
+                        <button class="song-play">
+                            <i class="fas fa-play"></i> Listen Now
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Song 4 - Added for JJ Lin -->
+                <div class="song-item">
+                    <div class="song-image">
+                        <img src="https://picsum.photos/seed/jjlin/300/300" alt="JJ Lin - Always Online">
+                    </div>
+                    <div class="song-info">
+                        <h3 class="song-name">Always Online</h3>
+                        <p class="song-artist">JJ Lin (林俊杰) from <em>JJ陆</em> (2008)</p>
+                        <p class="song-description">
+                            A touching ballad that explores the theme of enduring love and connection. JJ Lin's soulful vocals and the song's beautiful melody have made "Always Online" a classic in Chinese pop music, resonating with listeners through its message of love that transcends distance and time.
+                        </p>
+                        <button class="song-play">
+                            <i class="fas fa-play"></i> Listen Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Game Section -->
+        <section id="games" class="game-section">
+            <div class="section-title">
+                <h2>Exciting Games to Play</h2>
+            </div>
+            <div class="section-intro">
+                <p>Explore a curated selection of games that I love to play, ranging from cooperative video games to social activities that bring people together. Each game is chosen for its creativity, gameplay, and ability to foster connection and fun.</p>
+            </div>
+            
+            <div class="game-tabs">
+                <div class="game-tab active" data-tab="video-games">Video Games</div>
+                <div class="game-tab" data-tab="social-games">Social Games</div>
+            </div>
+            
+            <div id="video-games" class="game-content active">
+                <div class="game-grid">
+                    <!-- Game 1 -->
+                    <div class="game-card">
+                        <div class="game-image">
+                            <img src="https://picsum.photos/seed/itTakesTwo/600/400" alt="It Takes Two">
+                        </div>
+                        <div class="game-details">
+                            <h3 class="game-name">It Takes Two</h3>
+                            <span class="game-type">Co-op Adventure</span>
+                            <p class="game-description">
+                                A critically acclaimed cooperative game where two players take on the roles of a married couple turned into dolls. Explore fantastical worlds and solve creative puzzles together, discovering the power of teamwork and communication.
+                            </p>
+                            <div class="game-features">
+                                <div class="game-feature"><i class="fas fa-users"></i> 2 Players</div>
+                                <div class="game-feature"><i class="fas fa-gamepad"></i> Puzzle Solving</div>
+                                <div class="game-feature"><i class="fas fa-magic"></i> Fantasy World</div>
+                                <div class="game-feature"><i class="fas fa-heart"></i> Story-Driven</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Game 2 -->
+                    <div class="game-card">
+                        <div class="game-image">
+                            <img src="https://picsum.photos/seed/shadowTwin/600/400" alt="Shadow Twin">
+                        </div>
+                        <div class="game-details">
+                            <h3 class="game-name">Shadow Twin</h3>
+                            <span class="game-type">Puzzle-Platformer</span>
+                            <p class="game-description">
+                                A unique puzzle-platformer where players control two characters in a world of light and shadow. Solve intricate puzzles by manipulating both characters and their environments, exploring the relationship between light and darkness.
+                            </p>
+                            <div class="game-features">
+                                <div class="game-feature"><i class="fas fa-users"></i> 1-2 Players</div>
+                                <div class="game-feature"><i class="fas fa-brain"></i> Puzzle Solving</div>
+                                <div class="game-feature"><i class="fas fa-shadow"></i> Shadow Mechanics</div>
+                                <div class="game-feature"><i class="fas fa-artstation"></i> Beautiful Art Style</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="social-games" class="game-content">
+                <div class="game-grid">
+                    <!-- Game 3 -->
+                    <div class="game-card">
+                        <div class="game-image">
+                            <img src="https://picsum.photos/seed/werewolf/600/400" alt="Werewolf">
+                        </div>
+                        <div class="game-details">
+                            <h3 class="game-name">Werewolf</h3>
+                            <span class="game-type">Social Deduction</span>
+                            <p class="game-description">
+                                A classic party game where players take on roles of villagers and werewolves. Villagers must identify and eliminate werewolves through discussion and deduction, while werewolves try to blend in and eliminate villagers under the cover of night.
+                            </p>
+                            <div class="game-features">
+                                <div class="game-feature"><i class="fas fa-users"></i> 8+ Players</div>
+                                <div class="game-feature"><i class="fas fa-mask"></i> Role Playing</div>
+                                <div class="game-feature"><i class="fas fa-search"></i> Deduction</div>
+                                <div class="game-feature"><i class="fas fa-comments"></i> Group Discussion</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Game 4 -->
+                    <div class="game-card">
+                        <div class="game-image">
+                            <img src="https://picsum.photos/seed/murderMystery/600/400" alt="Murder Mystery">
+                        </div>
+                        <div class="game-details">
+                            <h3 class="game-name">Murder Mystery</h3>
+                            <span class="game-type">Role Playing</span>
+                            <p class="game-description">
+                                An immersive role-playing game where players take on characters in a fictional murder case. Each player has a unique role and hidden agenda, working together (or against each other) to solve the mystery and identify the killer before time runs out.
+                            </p>
+                            <div class="game-features">
+                                <div class="game-feature"><i class="fas fa-users"></i> 6+ Players</div>
+                                <div class="game-feature"><i class="fas fa-clipboard-list"></i> Storytelling</div>
+                                <div class="game-feature"><i class="fas fa-gavel"></i> Investigation</div>
+                                <div class="game-feature"><i class="fas fa-costume"></i> Thematic Role Play</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Game 5 -->
+                    <div class="game-card">
+                        <div class="game-image">
+                            <img src="https://picsum.photos/seed/escapeRoom/600/400" alt="Escape Room">
+                        </div>
+                        <div class="game-details">
+                            <h3 class="game-name">Escape Room</h3>
+                            <span class="game-type">Puzzle Solving</span>
+                            <p class="game-description">
+                                A real-life adventure where players are locked in a room and must solve a series of puzzles and riddles to escape within a set time limit. Perfect for team building, escape rooms challenge groups to work together, communicate effectively, and think creatively.
+                            </p>
+                            <div class="game-features">
+                                <div class="game-feature"><i class="fas fa-users"></i> 2-10 Players</div>
+                                <div class="game-feature"><i class="fas fa-clock"></i> Time Limit</div>
+                                <div class="game-feature"><i class="fas fa-key"></i> Puzzle Solving</div>
+                                <div class="game-feature"><i class="fas fa-compass"></i> Thematic Experience</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">Joy's Creative World</div>
+            <div class="footer-social">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-spotify"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+            <p class="footer-copyright">
+                &copy; 2025 Joy Lee. Explore the beauty of poems, the magic of songs, and the excitement of games.
+            </p>
+        </div>
+    </footer>
+    
+    <script>
+        // Game tabs functionality
+        const gameTabs = document.querySelectorAll('.game-tab');
+        
+        gameTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs
+                gameTabs.forEach(t => t.classList.remove('active'));
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                
+                // Hide all game content
+                const gameContents = document.querySelectorAll('.game-content');
+                gameContents.forEach(content => content.classList.remove('active'));
+                
+                // Show corresponding game content
+                const tabContentId = tab.getAttribute('data-tab');
+                document.getElementById(tabContentId).classList.add('active');
+            });
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Audio play functionality (placeholder)
+        const playButtons = document.querySelectorAll('.song-play');
+        
+        playButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                button.innerHTML = '<i class="fas fa-pause"></i> Playing...';
+                // In a real implementation, this would trigger audio play
+                // For now, it's a placeholder for interactive feedback
+                setTimeout(() => {
+                    button.innerHTML = '<i class="fas fa-play"></i> Listen Now';
+                }, 5000);
+            });
+        });
+    </script>
+</body>
+</html>
