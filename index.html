@@ -278,7 +278,7 @@
             display: flex;
             flex-wrap: wrap;
             gap: 3rem;
-            align-items: center;
+            align-items: flex-start;
         }
         
         .about-image {
@@ -295,7 +295,7 @@
         }
         
         .about-content {
-            flex: 1 1 400px;
+            flex: 1 1 450px;
         }
         
         .about-title {
@@ -308,8 +308,8 @@
         .about-info {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
+            gap: 1.2rem;
+            margin-bottom: 2rem;
         }
         
         .info-item {
@@ -328,15 +328,17 @@
         .info-label {
             font-weight: 600;
             color: var(--dark-color);
-            min-width: 100px;
+            min-width: 120px;
+            font-size: 1rem;
         }
         
         .info-value {
             color: #4A5568;
+            font-size: 1rem;
         }
         
         .hobbies {
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
         }
         
         .hobbies-title {
@@ -373,6 +375,7 @@
             color: var(--dark-color);
             padding-left: 1.5rem;
             position: relative;
+            margin-top: 1rem;
         }
         
         .motto::before {
@@ -468,7 +471,7 @@
         
         .xml-analysis {
             font-family: 'Courier New', Courier, monospace;
-            font-size: 0.9rem;
+            font-size: 0.8rem; /* 缩小XML字体 */
             background-color: white;
             padding: 0.5rem;
             border-radius: 4px;
@@ -885,7 +888,19 @@
                             </div>
                             <div class="info-item">
                                 <div class="info-label">Hometown:</div>
-                                <div class="info-value">Beijing, China</div>
+                                <div class="info-value">Nanchang, Jiangxi, China</div> <!-- 修改为江西南昌 -->
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">University:</div>
+                                <div class="info-value">Shanghai University</div> <!-- 添加学校信息 -->
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Major:</div>
+                                <div class="info-value">Computer Science and Technology</div> <!-- 添加专业信息 -->
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Grade:</div>
+                                <div class="info-value">Sophomore</div> <!-- 添加年级信息 -->
                             </div>
                         </div>
                         
@@ -981,9 +996,7 @@
                         <p class="poem-text">
                             "Love is life in its fullness like the cup with its wine.<br><br>
                             When love is not madness, it is not love.<br><br>
-                            The same love that makes me laugh makes me cry.<br><br>
-                            Let life be beautiful like summer flowers<br>
-                            and death like autumn leaves."
+                            The same love that makes me laugh makes me cry."
                         </p>
                         <div class="poem-analysis">
                             <div class="analysis-title">Critical Analysis (XML Format)</div>
@@ -1020,10 +1033,10 @@
                         <p class="poem-text">
                             "The world has kissed my soul with its pain,<br>
                             asking for its return in songs.<br><br>
-                            The touch of the nameless days clings to my heart<br>
-                            like mosses round the old tree.<br><br>
                             Death's stamp gives value to the coin of life;<br>
-                            making it possible to buy with life what is truly precious."
+                            making it possible to buy with life what is truly precious.<br><br>
+                            Let life be beautiful like summer flowers<br>
+                            and death like autumn leaves." <!-- 调整后的诗句 -->
                         </p>
                         <div class="poem-analysis">
                             <div class="analysis-title">Critical Analysis (XML Format)</div>
@@ -1041,7 +1054,7 @@
     &lt;element name="allusion"&gt;Nature as a symbol of timelessness&lt;/element&gt;
   &lt;/literary-elements&gt;
   &lt;interpretation&gt;
-    The poem contemplates how pain and mortality give meaning to life, suggesting that true value arises from the awareness of our finite existence.
+    The poem contemplates how pain and mortality give meaning to life, suggesting that true value arises from the awareness of our finite existence. The imagery of summer flowers and autumn leaves symbolizes the beauty and transience of life.
   &lt;/interpretation&gt;
 &lt;/poem-analysis&gt;
                             </div>
@@ -1071,10 +1084,11 @@
                         <p class="song-description">
                             A timeless love song that reimagines Shakespeare's <em>Romeo and Juliet</em> with a happy ending. The song's catchy melody and romantic narrative made it a breakthrough hit for Taylor Swift, blending country and pop elements seamlessly.
                         </p>
-                        <button class="song-play">
+                        <button class="song-play" data-song="love-story.m4a">
                             <i class="fas fa-play"></i> Listen Now
                         </button>
                     </div>
+                    <audio class="song-audio" src="love-story.m4a" controls style="display: none;"></audio> <!-- 歌曲音频元素 -->
                 </div>
                 
                 <!-- Song 2 -->
@@ -1088,10 +1102,11 @@
                         <p class="song-description">
                             A vibrant pop anthem that captures the intensity of a summer romance. With its infectious beat and relatable lyrics about love's highs and lows, "Cruel Summer" has become a fan favorite, showcasing Taylor's ability to evolve her sound while maintaining emotional depth.
                         </p>
-                        <button class="song-play">
+                        <button class="song-play" data-song="cruel-summer.m4a">
                             <i class="fas fa-play"></i> Listen Now
                         </button>
                     </div>
+                    <audio class="song-audio" src="cruel-summer.m4a" controls style="display: none;"></audio> <!-- 歌曲音频元素 -->
                 </div>
                 
                 <!-- Song 3 -->
@@ -1105,10 +1120,11 @@
                         <p class="song-description">
                             A classic teenage love song that tells the story of unrequited love. The music video, featuring Taylor in dual roles, became an iconic part of her early career, and the song's relatable lyrics about friendship and love have made it a timeless favorite.
                         </p>
-                        <button class="song-play">
+                        <button class="song-play" data-song="you-belong-with-me.m4a">
                             <i class="fas fa-play"></i> Listen Now
                         </button>
                     </div>
+                    <audio class="song-audio" src="you-belong-with-me.m4a" controls style="display: none;"></audio> <!-- 歌曲音频元素 -->
                 </div>
                 
                 <!-- Song 4 - Added for JJ Lin -->
@@ -1122,10 +1138,11 @@
                         <p class="song-description">
                             A touching ballad that explores the theme of enduring love and connection. JJ Lin's soulful vocals and the song's beautiful melody have made "Always Online" a classic in Chinese pop music, resonating with listeners through its message of love that transcends distance and time.
                         </p>
-                        <button class="song-play">
+                        <button class="song-play" data-song="always-online.m4a">
                             <i class="fas fa-play"></i> Listen Now
                         </button>
                     </div>
+                    <audio class="song-audio" src="always-online.m4a" controls style="display: none;"></audio> <!-- 歌曲音频元素 -->
                 </div>
             </div>
         </section>
@@ -1303,17 +1320,35 @@
             });
         });
         
-        // Audio play functionality (placeholder)
+        // Audio play functionality
         const playButtons = document.querySelectorAll('.song-play');
+        const audioElements = document.querySelectorAll('.song-audio');
         
-        playButtons.forEach(button => {
+        playButtons.forEach((button, index) => {
             button.addEventListener('click', () => {
-                button.innerHTML = '<i class="fas fa-pause"></i> Playing...';
-                // In a real implementation, this would trigger audio play
-                // For now, it's a placeholder for interactive feedback
-                setTimeout(() => {
+                const audio = audioElements[index];
+                
+                if (audio.paused) {
+                    // 隐藏所有音频元素
+                    audioElements.forEach(a => a.style.display = 'none');
+                    // 显示当前音频并播放
+                    audio.style.display = 'block';
+                    audio.play();
+                    button.innerHTML = '<i class="fas fa-pause"></i> Playing...';
+                } else {
+                    audio.pause();
+                    audio.style.display = 'none';
                     button.innerHTML = '<i class="fas fa-play"></i> Listen Now';
-                }, 5000);
+                }
+            });
+        });
+        
+        // 音频结束后重置按钮状态
+        audioElements.forEach(audio => {
+            audio.addEventListener('ended', () => {
+                const button = audio.previousElementSibling;
+                button.innerHTML = '<i class="fas fa-play"></i> Listen Now';
+                audio.style.display = 'none';
             });
         });
     </script>
