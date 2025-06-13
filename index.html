@@ -471,7 +471,7 @@
         
         .xml-analysis {
             font-family: 'Courier New', Courier, monospace;
-            font-size: 0.8rem; /* 缩小XML字体 */
+            font-size: 0.8rem;
             background-color: white;
             padding: 0.5rem;
             border-radius: 4px;
@@ -545,22 +545,6 @@
             font-size: 0.95rem;
             color: #444;
             flex-grow: 1;
-        }
-        
-        .song-play {
-            align-self: flex-start;
-            background-color: var(--accent-color);
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: 500;
-            transition: background-color 0.3s ease;
-        }
-        
-        .song-play:hover {
-            background-color: #E68A00;
         }
         
         /* Game Section */
@@ -888,19 +872,19 @@
                             </div>
                             <div class="info-item">
                                 <div class="info-label">Hometown:</div>
-                                <div class="info-value">Nanchang, Jiangxi, China</div> <!-- 修改为江西南昌 -->
+                                <div class="info-value">Nanchang, Jiangxi, China</div>
                             </div>
                             <div class="info-item">
                                 <div class="info-label">University:</div>
-                                <div class="info-value">Shanghai University</div> <!-- 添加学校信息 -->
+                                <div class="info-value">Shanghai University</div>
                             </div>
                             <div class="info-item">
                                 <div class="info-label">Major:</div>
-                                <div class="info-value">Computer Science and Technology</div> <!-- 添加专业信息 -->
+                                <div class="info-value">Computer Science and Technology</div>
                             </div>
                             <div class="info-item">
                                 <div class="info-label">Grade:</div>
-                                <div class="info-value">Sophomore</div> <!-- 添加年级信息 -->
+                                <div class="info-value">Sophomore</div>
                             </div>
                         </div>
                         
@@ -988,7 +972,7 @@
                 <!-- Poem 2 -->
                 <div class="poem-card">
                     <div class="poem-image">
-                        <img src="https://picsum.photos/seed/poem2/600/400" alt="Poem Image">
+                        <img src="https://th.bing.com/th/id/OIP.VuVqg638-6V8BJ03H8DFLAEyDL?w=259&h=180&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3" alt="Poem Image">
                     </div>
                     <div class="poem-content">
                         <h3 class="poem-title">On Love</h3>
@@ -1036,7 +1020,7 @@
                             Death's stamp gives value to the coin of life;<br>
                             making it possible to buy with life what is truly precious.<br><br>
                             Let life be beautiful like summer flowers<br>
-                            and death like autumn leaves." <!-- 调整后的诗句 -->
+                            and death like autumn leaves."
                         </p>
                         <div class="poem-analysis">
                             <div class="analysis-title">Critical Analysis (XML Format)</div>
@@ -1084,11 +1068,7 @@
                         <p class="song-description">
                             A timeless love song that reimagines Shakespeare's <em>Romeo and Juliet</em> with a happy ending. The song's catchy melody and romantic narrative made it a breakthrough hit for Taylor Swift, blending country and pop elements seamlessly.
                         </p>
-                        <button class="song-play" data-song="love-story.m4a">
-                            <i class="fas fa-play"></i> Listen Now
-                        </button>
                     </div>
-                    <audio class="song-audio" src="love-story.m4a" controls style="display: none;"></audio> <!-- 歌曲音频元素 -->
                 </div>
                 
                 <!-- Song 2 -->
@@ -1102,11 +1082,7 @@
                         <p class="song-description">
                             A vibrant pop anthem that captures the intensity of a summer romance. With its infectious beat and relatable lyrics about love's highs and lows, "Cruel Summer" has become a fan favorite, showcasing Taylor's ability to evolve her sound while maintaining emotional depth.
                         </p>
-                        <button class="song-play" data-song="cruel-summer.m4a">
-                            <i class="fas fa-play"></i> Listen Now
-                        </button>
                     </div>
-                    <audio class="song-audio" src="cruel-summer.m4a" controls style="display: none;"></audio> <!-- 歌曲音频元素 -->
                 </div>
                 
                 <!-- Song 3 -->
@@ -1120,11 +1096,7 @@
                         <p class="song-description">
                             A classic teenage love song that tells the story of unrequited love. The music video, featuring Taylor in dual roles, became an iconic part of her early career, and the song's relatable lyrics about friendship and love have made it a timeless favorite.
                         </p>
-                        <button class="song-play" data-song="you-belong-with-me.m4a">
-                            <i class="fas fa-play"></i> Listen Now
-                        </button>
                     </div>
-                    <audio class="song-audio" src="you-belong-with-me.m4a" controls style="display: none;"></audio> <!-- 歌曲音频元素 -->
                 </div>
                 
                 <!-- Song 4 - Added for JJ Lin -->
@@ -1138,11 +1110,7 @@
                         <p class="song-description">
                             A touching ballad that explores the theme of enduring love and connection. JJ Lin's soulful vocals and the song's beautiful melody have made "Always Online" a classic in Chinese pop music, resonating with listeners through its message of love that transcends distance and time.
                         </p>
-                        <button class="song-play" data-song="always-online.m4a">
-                            <i class="fas fa-play"></i> Listen Now
-                        </button>
                     </div>
-                    <audio class="song-audio" src="always-online.m4a" controls style="display: none;"></audio> <!-- 歌曲音频元素 -->
                 </div>
             </div>
         </section>
@@ -1317,38 +1285,6 @@
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
                 });
-            });
-        });
-        
-        // Audio play functionality
-        const playButtons = document.querySelectorAll('.song-play');
-        const audioElements = document.querySelectorAll('.song-audio');
-        
-        playButtons.forEach((button, index) => {
-            button.addEventListener('click', () => {
-                const audio = audioElements[index];
-                
-                if (audio.paused) {
-                    // 隐藏所有音频元素
-                    audioElements.forEach(a => a.style.display = 'none');
-                    // 显示当前音频并播放
-                    audio.style.display = 'block';
-                    audio.play();
-                    button.innerHTML = '<i class="fas fa-pause"></i> Playing...';
-                } else {
-                    audio.pause();
-                    audio.style.display = 'none';
-                    button.innerHTML = '<i class="fas fa-play"></i> Listen Now';
-                }
-            });
-        });
-        
-        // 音频结束后重置按钮状态
-        audioElements.forEach(audio => {
-            audio.addEventListener('ended', () => {
-                const button = audio.previousElementSibling;
-                button.innerHTML = '<i class="fas fa-play"></i> Listen Now';
-                audio.style.display = 'none';
             });
         });
     </script>
